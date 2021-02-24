@@ -4,6 +4,7 @@ ENV hostname=localhost
 VOLUME /var/lib/glusterd
 
 RUN \
+  apt update && \
   apt install -y python3-pip && \
   pip3 install gdash
 
