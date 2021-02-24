@@ -9,4 +9,4 @@ RUN \
   pip3 install gdash
 
 EXPOSE 8080
-ENTRYPOINT gdash --host $hostname
+ENTRYPOINT gdash $hostname
