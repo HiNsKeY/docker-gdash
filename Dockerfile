@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 MAINTAINER Sam Hinsley sam.hinsley@gmail.com
 ENV hostname=localhost
-VOLUME /etc/glusterfs
+VOLUME /usr/sbin/glusterd
 
 RUN \
   apt update && \
@@ -9,4 +9,4 @@ RUN \
   pip3 install gdash
 
 EXPOSE 8080
-ENTRYPOINT gdash $hostname
+ENTRYPOINT gdash $hostname --gluster-binary /usr/sbin/glusterd
