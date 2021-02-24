@@ -1,13 +1,11 @@
-FROM centos:7
-MAINTAINER Yoshiaki Kawazu kawazzz@gmail.com
+FROM ubuntu:20.04
+MAINTAINER Sam Hinsley sam.hinsley@gmail.com
+ENV hostname=localhost
+VOLUME /var/lib/glusterd
 
 RUN \
-  curl -sL -o /etc/yum.repos.d/glusterfs-epel.repo http://download.gluster.org/pub/gluster/glusterfs/LATEST/EPEL.repo/glusterfs-epel.repo && \ 
-  yum install -y --enablerepo=glusterfs-epel glusterfs-\* && \
-  yum install -y http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm && \
-  yum install -y python-pip && \
-  pip install gdash && \
-  yum clean all
+  apt install -y python3-pip && \
+  pip3 install gdash
 
 EXPOSE 8080
-ENTRYPOINT gdash
+ENTRYPOINT gdash $hostname
