@@ -1,0 +1,11 @@
+version: '2'
+services:
+  gdash:
+    image: hinskey/gdash
+    restart: unless-stopped
+    ports: 
+      - "8080:8080"
+    environment: 
+      - hostname="localhost"
+    volumes: 
+      - /var/lib/glusterd:/var/lib/glusterd:ro
